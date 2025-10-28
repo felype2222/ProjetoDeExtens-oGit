@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Portfólio Pessoal</title>
+
+    <style>
+        /* ---- VARIÁVEIS DE COR (TEMA) ---- */
+        :root {
+            --cor-primaria-azul: #004a99; /* Azul escuro para fundos e títulos */
+            --cor-secundaria-amarelo: #FFC107; /* Amarelo para botões e destaques */
+            --cor-texto: #333;
+            --cor-texto-claro: #ffffff;
+            --cor-fundo-claro: #f4f4f4;
+        }
+
+        /* ---- RESET GLOBAL E FONTES ---- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Para rolagem suave ao clicar nos links do menu */
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--cor-texto);
+            background-color: #fff;
+            padding-top: 70px; /* Espaço no topo para o menu fixo */
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ---- CABEÇALHO E NAVEGAÇÃO ---- */
+        header {
+            background-color: var(--cor-primaria-azul);
+            color: var(--cor-texto-claro);
+            padding: 15px 0;
+            position: fixed; /* Deixa o menu fixo no topo */
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo {
+            font-size: 1.8rem;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        header nav li {
+            margin-left: 25px;
+        }
+
+        header nav a {
+            color: var(--cor-texto-claro);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        header nav a:hover {
+            color: var(--cor-secundaria-amarelo); /* Efeito hover amarelo */
+        }
+
+        /* ---- BOTÃO PADRÃO (AMARELO) ---- */
+        .btn {
+            display: inline-block;
+            background-color: var(--cor-secundaria-amarelo);
+            color: var(--cor-texto);
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #ffd040;
+            transform: translateY(-2px); /* Efeito de "levantar" o botão */
+        }
+
+        /* ---- SEÇÃO HERO ---- */
+        #hero {
+            background-color: var(--cor-primaria-azul);
+            color: var(--cor-texto-claro);
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        #hero h2 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        #hero p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+        }
+
+        /* ---- SEÇÕES PADRÃO ---- */
+        section {
+            padding: 60px 0;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            color: var(--cor-primaria-azul);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        /* Fundo alternado para ritmo visual */
+        #sobre, #contato {
+            background-color: var(--cor-fundo-claro);
+        }
+
+        /* ---- SEÇÃO PROJETOS (GRID) ---- */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+
+        .project-card h3 {
+            color: var(--cor-primaria-azul);
+            margin-bottom: 10px;
+        }
+
+        /* ---- SEÇÃO CONTATO (FORMULÁRIO) ---- */
+        #contato form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        #contato .btn {
+            border: none;
+            cursor: pointer;
+        }
+
+        /* ---- RODAPÉ ---- */
+        footer {
+            background-color: #333;
+            color: var(--cor-texto-claro);
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        /* ---- RESPONSIVIDADE (PARA CELULARES) ---- */
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+            }
+
+            header nav {
+                margin-top: 10px;
+            }
+
+            header nav li {
+                margin: 0 10px;
+            }
+
+            #hero h2 {
+                font-size: 2.2rem;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr; /* Coluna única em telas pequenas */
+            }
+        }
+    </style>
+    </head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1 class="logo">[Seu Nome Aqui]</h1>
+            <nav>
+                <ul>
+                    <li><a href="#hero">Início</a></li>
+                    <li><a href="#sobre">Sobre Mim</a></li>
+                    <li><a href="#projetos">Projetos</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="container">
+            <h2>Olá, eu sou [Sua Profissão]</h2>
+            <p>Especialista em criar soluções incríveis e apaixonado por tecnologia.</p>
+            <a href="#projetos" class="btn">Ver Meus Projetos</a>
+        </div>
+    </section>
+
+    <section id="sobre">
+        <div class="container">
+            <h2>Sobre Mim</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl quis tempor aliquam, nunc nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl. Nulla facilisi. Praesent sit amet congue nunc. Vivamus nec ligula nec nisl facilisis aliquet. (Substitua este texto por sua biografia).</p>
+        </div>
+    </section>
+
+    <section id="projetos">
+        <div class="container">
+            <h2>Meus Projetos</h2>
+            <div class="project-grid">
+                
+                <div class="project-card">
+                    <h3>Projeto 1</h3>
+                    <p>Uma breve descrição do seu primeiro projeto. O que ele faz e quais tecnologias usou.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3>Projeto 2</h3>
+                    <p>Uma breve descrição do seu segundo projeto. O que ele faz e quais tecnologias usou.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3>Projeto 3</h3>
+                    <p>Uma breve descrição do seu terceiro projeto. O que ele faz e quais tecnologias usou.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contato">
+        <div class="container">
+            <h2>Entre em Contato</h2>
+            <p>Gostaria de conversar? Me mande uma mensagem!</p>
+            
+            <form>
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" name="nome">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="mensagem">Mensagem</label>
+                    <textarea id="mensagem" name="mensagem" rows="5"></textarea>
+                </div>
+                <button type="submit" class="btn">Enviar Mensagem</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 [Seu Nome]. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
